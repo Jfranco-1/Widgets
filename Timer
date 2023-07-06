@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #timer{
+            font-size:25px;
+            text-align:center;
+            margin-top:50px;
+            color:#ffffff;
+            background-color: #2196F3;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 15px;
+            width: 130px;
+        }
+        #timer:after{
+            content:"";
+            background:#fff;
+        }
+        body{
+            background: #f8f8f8;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <p id="timer"></p>
+
+    <script>
+        // Set the countdown time
+        var countDownTime = new Date().getTime() + 15*60000; // Here 15 minutes timer is set 
+
+        // Update the countdown time every 1 second
+        var x = setInterval(function() {
+          var now = new Date().getTime();
+          var timeLeft = countDownTime - now;
+
+          // Calculating time left
+          var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+          // Display the result
+          document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s ";
+        
+          // If the countdown is over, write 'EXPIRED'
+          if (timeLeft < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "EXPIRED";
+            document.getElementById("timer").style.background = "#f44336";
+          }
+        }, 1000);
+    </script>
+</body>
+</html>
