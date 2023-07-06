@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+      body{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        height: 90vh;
+      }
+      .timerWrapper{
+        display:flex;
+        flex-direction: column;
+      }
+      #timerDisplay{
+        font-size: 50px;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid black;
+        width: 100px;
+        text-align: center;
+      }
+      button{
+        padding: 10px;
+        margin-top: 10px;
+        width: 100px;
+      }
+    </style>
+</head>
+<body>
+  <div class="timerWrapper">
+    <div id="timerDisplay">00:00</div>
+    <button id="incrementButton">+1 min</button>
+    <button id="startStopButton">Start</button>
+    <button id="resetButton">Reset</button>
+  </div>
+
+  <script>
+    let totalSeconds = 0;
+    let intervalId = 0;
+
+    document.getElementById('incrementButton').onclick = function() {
+      totalSeconds += 60;
+      updateTimerDisplay();
+    }
+
+    document.getElementById('startStopButton').onclick = function() {
+      if(this.innerHTML === 'Start') {
+        intervalId = setInterval(function() {
+          totalSeconds--;
+          updateTimerDisplay();
+          if(totalSeconds <= 0) {
+            clearInterval(intervalId);
+          }
+        }, 1000);
+
+        this.innerHTML = 'Stop';
+      }
+      else {
+        clearInterval(intervalId);
+        this.innerHTML = 'Start';
+      }
+    }
+
+    document.getElementById('resetButton').onclick = function() {
+      totalSeconds = 0;
+      clearInterval(intervalId);
+      document.getElementById('startStopButton').innerHTML = 'Start';
+      updateTimerDisplay();
+    }
+
+    function updateTimerDisplay() {
+      let minutes = Math.floor(totalSeconds / 60);
+      let seconds = totalSeconds % 60;
+      document.getElementById('timerDisplay').innerHTML = `${pad(minutes)}:${pad(seconds)}`;
+    }
+
+    function pad(val) {
+      if(val < 10)
+        return '0' + val;
+      else
+        return val;
+    }
+  </script>
+</body>
+</html>
