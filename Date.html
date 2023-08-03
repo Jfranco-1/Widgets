@@ -6,14 +6,15 @@
   <title>Date Widget</title>
   <style>
     #dateWidget {
-      display: flex;
-      justify-content: space-between;
       width: 100%;
-      max-width: 350px;
+      max-width: 450px;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
       box-sizing: border-box;
+    }
+    #currentDate, #sixWeeksFromNow {
+      display: block;
     }
   </style>
 </head>
@@ -26,7 +27,10 @@
 
   <script>
     function formatDate(date) {
-      return date.toLocaleDateString();
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      return monthNames[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
     }
 
     function getDateSixWeeksFromNow() {
@@ -35,8 +39,8 @@
       return currentDate;
     }
 
-    document.getElementById("currentDate").innerText = "Today is: " + formatDate(new Date());
-    document.getElementById("sixWeeksFromNow").innerText = "6 weeks from now is: " + formatDate(getDateSixWeeksFromNow());
+    document.getElementById("currentDate").innerText = "Today is " + formatDate(new Date());
+    document.getElementById("sixWeeksFromNow").innerText = "6 weeks from now is " + formatDate(getDateSixWeeksFromNow());
   </script>
 
 </body>
