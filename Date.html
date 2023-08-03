@@ -23,7 +23,7 @@
       background-color: white;
     }
 
-    #currentDate, #sixWeeksFromNow {
+    #currentDate, #sixWeeksFromNow, #eightWeeksFromNow {
       display: block;
       font-weight: bold;
     }
@@ -34,6 +34,7 @@
   <div id="dateWidget">
     <span id="currentDate"></span>
     <span id="sixWeeksFromNow"></span>
+    <span id="eightWeeksFromNow"></span>
   </div>
 
   <script>
@@ -44,14 +45,15 @@
       return monthNames[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
     }
 
-    function getDateSixWeeksFromNow() {
+    function getDateXWeeksFromNow(weeks) {
       const currentDate = new Date();
-      currentDate.setDate(currentDate.getDate() + (6 * 7));
+      currentDate.setDate(currentDate.getDate() + (weeks * 7));
       return currentDate;
     }
 
     document.getElementById("currentDate").innerText = "Today is " + formatDate(new Date());
-    document.getElementById("sixWeeksFromNow").innerText = "6 weeks from now is " + formatDate(getDateSixWeeksFromNow());
+    document.getElementById("sixWeeksFromNow").innerText = "6 weeks from now is " + formatDate(getDateXWeeksFromNow(6));
+    document.getElementById("eightWeeksFromNow").innerText = "8 weeks from now is " + formatDate(getDateXWeeksFromNow(8));
   </script>
 
 </body>
