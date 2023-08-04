@@ -6,26 +6,39 @@
   <title>Date Widget</title>
   <style>
     body {
-      background-color: white;
+      background-color: #f0f0f0;
       font-family: Helvetica, Arial, sans-serif;
       font-size: 18px;
+      line-height: 1.5;
+      color: #333;
     }
 
     #dateWidget {
       width: 100%;
       max-width: 450px;
-      margin: 0 auto;
-      padding: 10px;
+      margin: 50px auto;
+      padding: 20px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 10px;
       box-sizing: border-box;
       text-align: center;
       background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     #currentDate, #sixWeeksFromNow, #eightWeeksFromNow {
       display: block;
       font-weight: bold;
+      font-size: 20px;
+    }
+
+    #sixWeeksFromNow {
+      margin-bottom: 20px;
+      color: #2d5aa3; /* Add color to the '6 weeks from now' text for better readability */
+    }
+
+    #eightWeeksFromNow {
+      color: #4caf50; /* Add color to the '8 weeks from now' text for better readability */
     }
   </style>
 </head>
