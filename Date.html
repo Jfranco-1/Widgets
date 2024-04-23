@@ -1,64 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Date Widget</title>
-    <style>
-        body {
-            background-color: #f0f0f0;
-            margin: 0; /* Added to remove default margin */
-            font-family: Helvetica, Arial, sans-serif;
-            overflow: hidden; /* Prevents overflow */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Widget</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;  /* Sensible default for full-height, though it could be adjusted or removed depending on usage context */
+      box-sizing: border-box;
+    }
 
-        #dateWidget {
-            width: calc(100% - 40px); /* Width calculation with padding */
-            padding: 2vw; /* Dynamic padding based on viewport width */
-            margin: 2vw auto; /* Keeps the widget centered and responsive */
-            border: 1px solid #ccc;
-            border-radius: 5px; /* Lesser radius for small sizes */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: white;
-            text-align: center;
-        }
+    #dateWidget {
+      width: 100%;
+      padding: 20px;  /* Consider using percentages or adjusting this for very small viewports */
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      box-sizing: border-box;
+    }
 
-        #currentDate, #eightWeeksFromNow {
-            display: block;
-            margin-bottom: 0.5em; /* Spacing between elements */
-            font-weight: bold;
-            font-size: 4vw; /* Responsive font size */
-        }
+    #currentDate, #eightWeeksFromNow {
+      display: block;
+      margin: 10px 0;
+      font-weight: bold;
+      font-size: 1.2em;  /* Responsive font sizing. You could adjust or use VW units */
+    }
 
-        #eightWeeksFromNow {
-            color: #4caf50; /* Enhanced readability for color */
-        }
-    </style>
+    #eightWeeksFromNow {
+      color: #4caf50; /* Enhanced readability for color */
+    }
+  </style>
 </head>
 <body>
+  <div id="dateWidget">
+    <span id="currentDate"></span>
+    <span id="eightWeeksFromNow"></span>
+  </div>
 
-    <div id="dateWidget">
-        <span id="currentDate"></span>
-        <span id="eightWeeksFromNow"></span>
-    </div>
+  <script>
+    function formatDate(date) {
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+      return monthNames[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+    }
 
-    <script>
-        function formatDate(date) {
-            const monthNames = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"
-            ];
-            return monthNames[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
-        }
+    function getDateXWeeksFromNow(weeks) {
+      const currentDate = new Date();
+      currentDate.setDate(currentDate.getDate() + (weeks * 7));
+      return currentDate;
+    }
 
-        function getDateXWeeksFromNow(weeks) {
-            const currentDate = new Date();
-            currentDate.setDate(currentDate.getDate() + (weeks * 7));
-            return currentDate;
-        }
-
-        document.getElementById("currentDate").innerText = "Today is " + formatDate(new Date());
-        document.getElementById("eightWeeksFromNow").innerText = "8 weeks from now is " + formatDate(getDateXWeeksFromNow(8));
-    </script>
-
+    document.getElementById("currentDate").innerText = "Today is " + formatDate(new Date());
+    document.getElementById("eightWeeksFromNow").innerText = "8 weeks from now is " + formatDate(getDateXWeeksFromNow(8));
+  </script>
 </body>
 </html>
