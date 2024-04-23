@@ -32,11 +32,6 @@
       font-size: 20px;
     }
 
-    #sixWeeksFromNow {
-      margin-bottom: 20px;
-      color: #2d5aa3; /* Add color to the '6 weeks from now' text for better readability */
-    }
-
     #eightWeeksFromNow {
       color: #4caf50; /* Add color to the '8 weeks from now' text for better readability */
     }
@@ -46,7 +41,6 @@
 
   <div id="dateWidget">
     <span id="currentDate"></span>
-    <span id="sixWeeksFromNow"></span>
     <span id="eightWeeksFromNow"></span>
   </div>
 
@@ -65,7 +59,6 @@
     }
 
     document.getElementById("currentDate").innerText = "Today is " + formatDate(new Date());
-    document.getElementById("sixWeeksFromNow").innerText = "6 weeks from now is " + formatDate(getDateXWeeksFromNow(6));
     document.getElementById("eightWeeksFromNow").innerText = "8 weeks from now is " + formatDate(getDateXWeeksFromNow(8));
   </script>
 
