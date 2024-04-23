@@ -1,66 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Date Widget</title>
-  <style>
-    body {
-      background-color: #f0f0f0;
-      font-family: Helvetica, Arial, sans-serif;
-      font-size: 18px;
-      line-height: 1.5;
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Widget</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            margin: 0; /* Added to remove default margin */
+            font-family: Helvetica, Arial, sans-serif;
+            overflow: hidden; /* Prevents overflow */
+        }
 
-    #dateWidget {
-      width: 100%;
-      max-width: 450px;
-      margin: 50px auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      box-sizing: border-box;
-      text-align: center;
-      background-color: white;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+        #dateWidget {
+            width: calc(100% - 40px); /* Width calculation with padding */
+            padding: 2vw; /* Dynamic padding based on viewport width */
+            margin: 2vw auto; /* Keeps the widget centered and responsive */
+            border: 1px solid #ccc;
+            border-radius: 5px; /* Lesser radius for small sizes */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            text-align: center;
+        }
 
-    #currentDate, #sixWeeksFromNow, #eightWeeksFromNow {
-      display: block;
-      font-weight: bold;
-      font-size: 20px;
-    }
+        #currentDate, #eightWeeksFromNow {
+            display: block;
+            margin-bottom: 0.5em; /* Spacing between elements */
+            font-weight: bold;
+            font-size: 4vw; /* Responsive font size */
+        }
 
-    #eightWeeksFromNow {
-      color: #4caf50; /* Add color to the '8 weeks from now' text for better readability */
-    }
-  </style>
+        #eightWeeksFromNow {
+            color: #4caf50; /* Enhanced readability for color */
+        }
+    </style>
 </head>
 <body>
 
-  <div id="dateWidget">
-    <span id="currentDate"></span>
-    <span id="eightWeeksFromNow"></span>
-  </div>
+    <div id="dateWidget">
+        <span id="currentDate"></span>
+        <span id="eightWeeksFromNow"></span>
+    </div>
 
-  <script>
-    function formatDate(date) {
-      const monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-      ];
-      return monthNames[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
-    }
+    <script>
+        function formatDate(date) {
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+            return monthNames[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+        }
 
-    function getDateXWeeksFromNow(weeks) {
-      const currentDate = new Date();
-      currentDate.setDate(currentDate.getDate() + (weeks * 7));
-      return currentDate;
-    }
+        function getDateXWeeksFromNow(weeks) {
+            const currentDate = new Date();
+            currentDate.setDate(currentDate.getDate() + (weeks * 7));
+            return currentDate;
+        }
 
-    document.getElementById("currentDate").innerText = "Today is " + formatDate(new Date());
-    document.getElementById("eightWeeksFromNow").innerText = "8 weeks from now is " + formatDate(getDateXWeeksFromNow(8));
-  </script>
+        document.getElementById("currentDate").innerText = "Today is " + formatDate(new Date());
+        document.getElementById("eightWeeksFromNow").innerText = "8 weeks from now is " + formatDate(getDateXWeeksFromNow(8));
+    </script>
 
 </body>
 </html>
